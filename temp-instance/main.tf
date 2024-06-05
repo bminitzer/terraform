@@ -157,7 +157,7 @@ resource "aws_instance" "temp-instance01" {
     sudo systemctl start amazon-ssm-agent
     sudo useradd -G wheel boaz ; echo Password123!$ | passwd boaz -stdin
     sudo yum update –y
-    line="* */1 * * * /bin/shutdown -h now >/dev/null 2>&1"
+    line="* */6 * * * /sbin/shutdown -h now >/dev/null 2>&1"
     (crontab -u $(whoami) -l; echo "$line" ) | crontab -u $(whoami) -
     sudo hostnamectl set-hostname CLOUDEA-10208
                   EOF
